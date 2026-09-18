@@ -44,7 +44,7 @@ header h1{
 
   color:#198754;
 
-  font-size:30px;
+  font-size:32px;
 
 }
 
@@ -54,15 +54,17 @@ header p{
 
   color:#687184;
 
+  font-size:17px;
+
 }
 
 main{
 
   max-width:900px;
 
-  margin:25px auto;
+  margin:auto;
 
-  padding:0 16px;
+  padding:24px 16px 60px;
 
 }
 
@@ -70,19 +72,21 @@ main{
 
   background:white;
 
-  border-radius:20px;
+  border-radius:24px;
 
   padding:24px;
 
-  margin-bottom:20px;
+  margin-bottom:22px;
 
-  box-shadow:0 8px 25px rgba(0,0,0,.07);
+  box-shadow:0 8px 30px rgba(0,0,0,.06);
 
 }
 
 h2{
 
   margin-top:0;
+
+  font-size:25px;
 
 }
 
@@ -98,11 +102,11 @@ h2{
 
 .stat{
 
-  background:#f3f8f5;
+  background:#f2f7f4;
 
-  border-radius:14px;
+  border-radius:18px;
 
-  padding:18px;
+  padding:18px 10px;
 
   text-align:center;
 
@@ -112,27 +116,43 @@ h2{
 
   display:block;
 
-  font-size:28px;
-
   color:#198754;
+
+  font-size:34px;
+
+}
+
+.stat span{
+
+  font-size:15px;
 
 }
 
 .appointment{
 
-  border:1px solid #e1e7e4;
+  border:1px solid #dfe7e3;
 
-  border-radius:14px;
+  border-radius:18px;
 
-  padding:16px;
+  padding:18px;
 
-  margin-top:12px;
+  margin:14px 0;
 
 }
 
-.appointment strong{
+.time{
 
-  font-size:18px;
+  font-size:21px;
+
+  font-weight:bold;
+
+}
+
+.service{
+
+  margin:10px 0;
+
+  color:#596579;
 
 }
 
@@ -140,17 +160,27 @@ h2{
 
   display:inline-block;
 
-  margin-top:8px;
-
-  padding:6px 10px;
+  padding:8px 13px;
 
   border-radius:20px;
 
-  background:#dff6e8;
+  background:#e2f5e9;
 
-  color:#167447;
+  color:#287b4b;
 
-  font-size:13px;
+  font-weight:bold;
+
+}
+
+.actions{
+
+  display:flex;
+
+  gap:10px;
+
+  margin-top:15px;
+
+  flex-wrap:wrap;
 
 }
 
@@ -158,21 +188,29 @@ button{
 
   border:0;
 
-  border-radius:10px;
+  border-radius:12px;
 
-  padding:10px 14px;
+  padding:12px 16px;
 
-  margin:8px 6px 0 0;
-
-  cursor:pointer;
+  font-size:15px;
 
   font-weight:bold;
+
+  cursor:pointer;
 
 }
 
 .primary{
 
-  background:#20c76a;
+  background:#198754;
+
+  color:white;
+
+}
+
+.whatsapp{
+
+  background:#25d366;
 
   color:white;
 
@@ -180,7 +218,7 @@ button{
 
 .danger{
 
-  background:#ffe5e5;
+  background:#fde7e7;
 
   color:#b42318;
 
@@ -188,9 +226,23 @@ button{
 
 .secondary{
 
-  background:#eef2f0;
+  background:#eef2f1;
 
-  color:#172033;
+  color:#273142;
+
+}
+
+.slot{
+
+  background:#f0faf4;
+
+  border:1px dashed #65a77e;
+
+  border-radius:16px;
+
+  padding:16px;
+
+  margin:10px 0;
 
 }
 
@@ -202,27 +254,67 @@ button{
 
 }
 
-#message{
+.ai h2{
 
-  margin-top:15px;
+  color:white;
 
-  padding:15px;
+}
 
-  border-radius:12px;
+.ai-box{
 
-  background:#f3f7f5;
+  background:#252e40;
 
-  display:none;
+  border-radius:16px;
+
+  padding:16px;
+
+  line-height:1.6;
+
+}
+
+.message{
+
+  background:#f6f8f7;
+
+  border-radius:16px;
+
+  padding:16px;
+
+  margin-top:12px;
+
+  white-space:pre-line;
+
+}
+
+.customer{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  gap:10px;
+
+  border-bottom:1px solid #e7ece9;
+
+  padding:14px 0;
+
+}
+
+.customer:last-child{
+
+  border-bottom:0;
 
 }
 
 @media(max-width:600px){
 
-  .stats{
+  .stats{grid-template-columns:1fr}
 
-    grid-template-columns:1fr;
+  .card{padding:20px}
 
-  }
+  header h1{font-size:28px}
 
 }
 
@@ -242,7 +334,7 @@ button{
 
 <main>
 
-<div class="card">
+<section class="card">
 
   <h2>📊 Situazione di oggi</h2>
 
@@ -250,257 +342,385 @@ button{
 
     <div class="stat">
 
-      <strong id="totale">3</strong>
+      <strong id="appointmentsCount">3</strong>
 
-      Appuntamenti
-
-    </div>
-
-    <div class="stat">
-
-      <strong id="liberi">4</strong>
-
-      Slot liberi
+      <span>Appuntamenti</span>
 
     </div>
 
     <div class="stat">
 
-      <strong>2</strong>
+      <strong id="slotsCount">4</strong>
 
-      Messaggi
+      <span>Slot liberi</span>
+
+    </div>
+
+    <div class="stat">
+
+      <strong id="messagesCount">2</strong>
+
+      <span>Messaggi</span>
 
     </div>
 
   </div>
 
-</div>
+</section>
 
-<div class="card">
+<section class="card">
 
   <h2>📅 Agenda</h2>
 
   <div class="appointment">
 
-    <strong>09:00 — Nicola</strong>
+    <div class="time">09:00 — Nicola</div>
 
-    <p>💆 Massaggio</p>
+    <div class="service">💆 Massaggio</div>
 
     <span class="status">Confermato</span>
 
-    <br>
+    <div class="actions">
 
-    <button class="secondary" onclick="contatta('Nicola')">
+      <button class="whatsapp"
 
-      💬 Contatta
+        onclick="contatta('Nicola','Massaggio','09:00')">
 
-    </button>
+        💬 Contatta
 
-    <button class="danger" onclick="disdici(this)">
+      </button>
 
-      ❌ Disdici
+      <button class="danger"
 
-    </button>
+        onclick="disdici('Nicola','09:00')">
+
+        ❌ Disdici
+
+      </button>
+
+    </div>
 
   </div>
 
   <div class="appointment">
 
-    <strong>11:00 — Marco</strong>
+    <div class="time">11:00 — Marco</div>
 
-    <p>💇 Taglio</p>
+    <div class="service">💇 Taglio</div>
 
     <span class="status">Confermato</span>
 
-    <br>
+    <div class="actions">
 
-    <button class="secondary" onclick="contatta('Marco')">
+      <button class="whatsapp"
 
-      💬 Contatta
+        onclick="contatta('Marco','Taglio','11:00')">
 
-    </button>
+        💬 Contatta
 
-    <button class="danger" onclick="disdici(this)">
+      </button>
 
-      ❌ Disdici
+      <button class="danger"
 
-    </button>
+        onclick="disdici('Marco','11:00')">
+
+        ❌ Disdici
+
+      </button>
+
+    </div>
 
   </div>
 
   <div class="appointment">
 
-    <strong>17:00 — Nicola</strong>
+    <div class="time">15:30 — Giulia</div>
 
-    <p>💅 Pedicure</p>
+    <div class="service">💅 Pedicure</div>
 
     <span class="status">Confermato</span>
 
-    <br>
+    <div class="actions">
 
-    <button class="secondary" onclick="contatta('Nicola')">
+      <button class="whatsapp"
 
-      💬 Contatta
+        onclick="contatta('Giulia','Pedicure','15:30')">
 
-    </button>
+        💬 Contatta
 
-    <button class="danger" onclick="disdici(this)">
+      </button>
 
-      ❌ Disdici
+      <button class="danger"
+
+        onclick="disdici('Giulia','15:30')">
+
+        ❌ Disdici
+
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="card">
+
+  <h2>🟢 Slot disponibili</h2>
+
+  <div class="slot">Oggi — 13:00</div>
+
+  <div class="slot">Oggi — 15:00</div>
+
+  <div class="slot">Oggi — 17:00</div>
+
+  <div class="slot">Oggi — 18:30</div>
+
+</section>
+
+<section class="card">
+
+  <h2>👥 Clienti da ricontattare</h2>
+
+  <div class="customer">
+
+    <div>
+
+      <strong>Anna</strong><br>
+
+      <small>Ha chiesto disponibilità</small>
+
+    </div>
+
+    <button class="whatsapp"
+
+      onclick="contattaCliente('Anna')">
+
+      WhatsApp
 
     </button>
 
   </div>
 
-</div>
+  <div class="customer">
 
-<div class="card">
+    <div>
+
+      <strong>Luca</strong><br>
+
+      <small>Ultimo appuntamento 30 giorni fa</small>
+
+    </div>
+
+    <button class="whatsapp"
+
+      onclick="contattaCliente('Luca')">
+
+      WhatsApp
+
+    </button>
+
+  </div>
+
+  <div class="customer">
+
+    <div>
+
+      <strong>Elena</strong><br>
+
+      <small>Ha cancellato un appuntamento</small>
+
+    </div>
+
+    <button class="whatsapp"
+
+      onclick="contattaCliente('Elena')">
+
+      WhatsApp
+
+    </button>
+
+  </div>
+
+</section>
+
+<section class="card ai">
 
   <h2>🤖 Assistente AI</h2>
 
-  <p>
+  <div class="ai-box">
 
-    Posso aiutarti a gestire l'agenda, trovare gli spazi disponibili
+    <strong>Analisi della giornata</strong><br><br>
 
-    e preparare i messaggi per i clienti.
+    Ho controllato l'agenda di oggi.<br><br>
 
-  </p>
+    • 3 appuntamenti confermati<br>
 
-  <button class="ai" onclick="analizzaAgenda()">
+    • 4 slot disponibili<br>
 
-    🤖 Analizza agenda
+    • 2 clienti da ricontattare<br>
 
-  </button>
+    • Nessuna sovrapposizione rilevata<br><br>
 
-  <button class="primary" onclick="cercaSlot()">
+    È presente uno spazio libero alle <strong>17:00</strong>.
 
-    🔎 Cerca slot libero
+    Posso preparare un messaggio per proporlo ai clienti.
 
-  </button>
+  </div>
 
-  <div id="message"></div>
+  <button class="primary"
 
-</div>
+    style="margin-top:15px"
 
-<div class="card">
+    onclick="trovaSlot()">
 
-  <h2>📲 Comunicazioni</h2>
-
-  <p>
-
-    Quando si libera un appuntamento, la segretaria può preparare
-
-    un messaggio WhatsApp per proporre lo slot ai clienti interessati.
-
-  </p>
-
-  <button class="primary" onclick="messaggioSlot()">
-
-    📲 Proponi slot libero
+    🔎 Cerca opportunità
 
   </button>
 
-  <div id="message2"></div>
+</section>
 
-</div>
+<section class="card" id="smartMessage" style="display:none">
+
+  <h2>📨 Messaggio suggerito dall'AI</h2>
+
+  <div class="message" id="messageText"></div>
+
+  <div class="actions">
+
+    <button class="whatsapp" onclick="apriWhatsApp()">
+
+      📱 Apri WhatsApp
+
+    </button>
+
+    <button class="secondary" onclick="chiudiMessaggio()">
+
+      Chiudi
+
+    </button>
+
+  </div>
+
+</section>
 
 </main>
 
 <script>
 
-function contatta(nome){
+let messaggioWhatsApp = "";
+
+function contatta(nome, servizio, ora){
+
+  const testo =
+
+`Ciao ${nome}! 😊
+
+Ti contatto per il tuo appuntamento di ${servizio} alle ${ora}.
+
+Hai bisogno di qualche informazione?
+
+A presto!`;
+
+  apriLinkWhatsApp(testo);
+
+}
+
+function contattaCliente(nome){
+
+  const testo =
+
+`Ciao ${nome}! 😊
+
+Sono la segreteria di PrenotaAI.
+
+Abbiamo alcune disponibilità per i prossimi appuntamenti.
+
+Ti interessa prenotare?`;
+
+  apriLinkWhatsApp(testo);
+
+}
+
+function disdici(nome, ora){
+
+  const conferma =
+
+  confirm(
+
+    "Vuoi segnare come disdetto l'appuntamento di " +
+
+    nome + " alle " + ora + "?"
+
+  );
+
+  if(!conferma) return;
 
   alert(
 
-    "Messaggio WhatsApp pronto per " + nome +
+    "Appuntamento disdetto.\n\n" +
 
-    ":\\n\\nCiao " + nome +
+    "Il sistema ha liberato lo slot delle " +
 
-    ", ti contatto da PrenotaAI per il tuo appuntamento."
+    ora +
+
+    " e può proporlo ad altri clienti."
 
   );
 
 }
 
-function disdici(button){
+function trovaSlot(){
 
-  const appuntamento = button.closest(".appointment");
+  const box = document.getElementById("smartMessage");
 
-  appuntamento.style.opacity="0.45";
+  const text = document.getElementById("messageText");
 
-  const status = appuntamento.querySelector(".status");
+  messaggioWhatsApp =
 
-  status.textContent="Disdetto";
+`Ciao! 😊
 
-  status.style.background="#ffe5e5";
+Si è appena liberato un appuntamento oggi alle 17:00.
 
-  status.style.color="#b42318";
+Ti interessa prenotarlo?
 
-  document.getElementById("liberi").textContent="5";
+Fammi sapere e te lo riservo!`;
 
-  alert(
+  text.textContent = messaggioWhatsApp;
 
-    "Appuntamento disdetto.\\n\\n" +
+  box.style.display = "block";
 
-    "Lo slot è ora disponibile per un altro cliente."
+  box.scrollIntoView({
 
-  );
+    behavior:"smooth",
 
-}
+    block:"center"
 
-function analizzaAgenda(){
-
-  const box=document.getElementById("message");
-
-  box.style.display="block";
-
-  box.innerHTML=
-
-    "<strong>🤖 Analisi completata</strong><br><br>" +
-
-    "Ho trovato 3 appuntamenti confermati.<br>" +
-
-    "È disponibile uno slot libero.<br>" +
-
-    "Posso preparare un messaggio per proporlo a un cliente.";
+  });
 
 }
 
-function cercaSlot(){
+function apriWhatsApp(){
 
-  const box=document.getElementById("message");
-
-  box.style.display="block";
-
-  box.innerHTML=
-
-    "<strong>🔎 Slot disponibili</strong><br><br>" +
-
-    "Oggi: 13:00, 15:30 e 18:30.<br><br>" +
-
-    "Questi orari possono essere proposti ai clienti.";
+  apriLinkWhatsApp(messaggioWhatsApp);
 
 }
 
-function messaggioSlot(){
+function apriLinkWhatsApp(testo){
 
-  const box=document.getElementById("message2");
+  const url =
 
-  box.style.display="block";
+    "https://wa.me/?text=" +
 
-  box.innerHTML=
+    encodeURIComponent(testo);
 
-    "<strong>📲 Messaggio pronto</strong><br><br>" +
+  window.location.href = url;
 
-    "Ciao! Si è liberato un appuntamento oggi. " +
+}
 
-    "Ti interessa prenotarlo? 😊<br><br>" +
+function chiudiMessaggio(){
 
-    "<button class='primary' onclick=\"alert('Qui collegheremo WhatsApp.')\">" +
-
-    "Apri WhatsApp" +
-
-    "</button>";
+  document.getElementById("smartMessage").style.display = "none";
 
 }
 
@@ -508,4 +728,4 @@ function messaggioSlot(){
 
 </body>
 
-</html
+</html>
