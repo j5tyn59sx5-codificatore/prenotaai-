@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+
+<html lang="it">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PrenotaAI - Segreteria</title>
+
+<style>
+
+*{box-sizing:border-box}
+
+body{
+
+  margin:0;
+
+  font-family:Arial,sans-serif;
+
+  background:#f3f7f5;
+
+  color:#172033;
+
+}
+
+header{
+
+  background:white;
+
+  padding:28px 20px;
+
+  text-align:center;
+
+  border-bottom:1px solid #e5ebe8;
+
+}
+
+header h1{
+
+  margin:0;
+
+  color:#198754;
+
+  font-size:30px;
+
+}
+
+header p{
+
+  margin:8px 0 0;
+
+  color:#687184;
+
+}
+
+main{
+
+  max-width:900px;
+
+  margin:25px auto;
+
+  padding:0 16px;
+
+}
+
+.card{
+
+  background:white;
+
+  border-radius:20px;
+
+  padding:24px;
+
+  margin-bottom:20px;
+
+  box-shadow:0 8px 25px rgba(0,0,0,.07);
+
+}
+
+h2{
+
+  margin-top:0;
+
+}
+
+.stats{
+
+  display:grid;
+
+  grid-template-columns:repeat(3,1fr);
+
+  gap:12px;
+
+}
+
+.stat{
+
+  background:#f3f8f5;
+
+  border-radius:14px;
+
+  padding:18px;
+
+  text-align:center;
+
+}
+
+.stat strong{
+
+  display:block;
+
+  font-size:28px;
+
+  color:#198754;
+
+}
+
+.appointment{
+
+  border:1px solid #e1e7e4;
+
+  border-radius:14px;
+
+  padding:16px;
+
+  margin-top:12px;
+
+}
+
+.appointment strong{
+
+  font-size:18px;
+
+}
+
+.status{
+
+  display:inline-block;
+
+  margin-top:8px;
+
+  padding:6px 10px;
+
+  border-radius:20px;
+
+  background:#dff6e8;
+
+  color:#167447;
+
+  font-size:13px;
+
+}
+
+button{
+
+  border:0;
+
+  border-radius:10px;
+
+  padding:10px 14px;
+
+  margin:8px 6px 0 0;
+
+  cursor:pointer;
+
+  font-weight:bold;
+
+}
+
+.primary{
+
+  background:#20c76a;
+
+  color:white;
+
+}
+
+.danger{
+
+  background:#ffe5e5;
+
+  color:#b42318;
+
+}
+
+.secondary{
+
+  background:#eef2f0;
+
+  color:#172033;
+
+}
+
+.ai{
+
+  background:#172033;
+
+  color:white;
+
+}
+
+#message{
+
+  margin-top:15px;
+
+  padding:15px;
+
+  border-radius:12px;
+
+  background:#f3f7f5;
+
+  display:none;
+
+}
+
+@media(max-width:600px){
+
+  .stats{
+
+    grid-template-columns:1fr;
+
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+  <h1>🤖 PrenotaAI</h1>
+
+  <p>La tua segretaria digitale</p>
+
+</header>
+
+<main>
+
+<div class="card">
+
+  <h2>📊 Situazione di oggi</h2>
+
+  <div class="stats">
+
+    <div class="stat">
+
+      <strong id="totale">3</strong>
+
+      Appuntamenti
+
+    </div>
+
+    <div class="stat">
+
+      <strong id="liberi">4</strong>
+
+      Slot liberi
+
+    </div>
+
+    <div class="stat">
+
+      <strong>2</strong>
+
+      Messaggi
+
+    </div>
+
+  </div>
+
+</div>
+
+<div class="card">
+
+  <h2>📅 Agenda</h2>
+
+  <div class="appointment">
+
+    <strong>09:00 — Nicola</strong>
+
+    <p>💆 Massaggio</p>
+
+    <span class="status">Confermato</span>
+
+    <br>
+
+    <button class="secondary" onclick="contatta('Nicola')">
+
+      💬 Contatta
+
+    </button>
+
+    <button class="danger" onclick="disdici(this)">
+
+      ❌ Disdici
+
+    </button>
+
+  </div>
+
+  <div class="appointment">
+
+    <strong>11:00 — Marco</strong>
+
+    <p>💇 Taglio</p>
+
+    <span class="status">Confermato</span>
+
+    <br>
+
+    <button class="secondary" onclick="contatta('Marco')">
+
+      💬 Contatta
+
+    </button>
+
+    <button class="danger" onclick="disdici(this)">
+
+      ❌ Disdici
+
+    </button>
+
+  </div>
+
+  <div class="appointment">
+
+    <strong>17:00 — Nicola</strong>
+
+    <p>💅 Pedicure</p>
+
+    <span class="status">Confermato</span>
+
+    <br>
+
+    <button class="secondary" onclick="contatta('Nicola')">
+
+      💬 Contatta
+
+    </button>
+
+    <button class="danger" onclick="disdici(this)">
+
+      ❌ Disdici
+
+    </button>
+
+  </div>
+
+</div>
+
+<div class="card">
+
+  <h2>🤖 Assistente AI</h2>
+
+  <p>
+
+    Posso aiutarti a gestire l'agenda, trovare gli spazi disponibili
+
+    e preparare i messaggi per i clienti.
+
+  </p>
+
+  <button class="ai" onclick="analizzaAgenda()">
+
+    🤖 Analizza agenda
+
+  </button>
+
+  <button class="primary" onclick="cercaSlot()">
+
+    🔎 Cerca slot libero
+
+  </button>
+
+  <div id="message"></div>
+
+</div>
+
+<div class="card">
+
+  <h2>📲 Comunicazioni</h2>
+
+  <p>
+
+    Quando si libera un appuntamento, la segretaria può preparare
+
+    un messaggio WhatsApp per proporre lo slot ai clienti interessati.
+
+  </p>
+
+  <button class="primary" onclick="messaggioSlot()">
+
+    📲 Proponi slot libero
+
+  </button>
+
+  <div id="message2"></div>
+
+</div>
+
+</main>
+
+<script>
+
+function contatta(nome){
+
+  alert(
+
+    "Messaggio WhatsApp pronto per " + nome +
+
+    ":\\n\\nCiao " + nome +
+
+    ", ti contatto da PrenotaAI per il tuo appuntamento."
+
+  );
+
+}
+
+function disdici(button){
+
+  const appuntamento = button.closest(".appointment");
+
+  appuntamento.style.opacity="0.45";
+
+  const status = appuntamento.querySelector(".status");
+
+  status.textContent="Disdetto";
+
+  status.style.background="#ffe5e5";
+
+  status.style.color="#b42318";
+
+  document.getElementById("liberi").textContent="5";
+
+  alert(
+
+    "Appuntamento disdetto.\\n\\n" +
+
+    "Lo slot è ora disponibile per un altro cliente."
+
+  );
+
+}
+
+function analizzaAgenda(){
+
+  const box=document.getElementById("message");
+
+  box.style.display="block";
+
+  box.innerHTML=
+
+    "<strong>🤖 Analisi completata</strong><br><br>" +
+
+    "Ho trovato 3 appuntamenti confermati.<br>" +
+
+    "È disponibile uno slot libero.<br>" +
+
+    "Posso preparare un messaggio per proporlo a un cliente.";
+
+}
+
+function cercaSlot(){
+
+  const box=document.getElementById("message");
+
+  box.style.display="block";
+
+  box.innerHTML=
+
+    "<strong>🔎 Slot disponibili</strong><br><br>" +
+
+    "Oggi: 13:00, 15:30 e 18:30.<br><br>" +
+
+    "Questi orari possono essere proposti ai clienti.";
+
+}
+
+function messaggioSlot(){
+
+  const box=document.getElementById("message2");
+
+  box.style.display="block";
+
+  box.innerHTML=
+
+    "<strong>📲 Messaggio pronto</strong><br><br>" +
+
+    "Ciao! Si è liberato un appuntamento oggi. " +
+
+    "Ti interessa prenotarlo? 😊<br><br>" +
+
+    "<button class='primary' onclick=\"alert('Qui collegheremo WhatsApp.')\">" +
+
+    "Apri WhatsApp" +
+
+    "</button>";
+
+}
+
+</script>
+
+</body>
+
+</html
