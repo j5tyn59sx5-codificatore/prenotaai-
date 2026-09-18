@@ -4,44 +4,46 @@
 
 <head>
 
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
-  <title>PrenotaAI</title>
+<title>PrenotaAI</title>
 
-  <style>
+<style>
 
-    body {
+*{box-sizing:border-box}body{font-family:Arial;margin:0;background:#f5f7fb;color:#172033}header{text-align:center;background:white;padding:30px 15px}main{max-width:550px;margin:30px auto;padding:20px}.card{background:white;padding:25px;border-radius:18px;box-shadow:0 5px 20px #0002}h1{margin:0}h2{text-align:center}label{display:block;font-weight:bold;margin:15px 0 6px}input,select{width:100%;padding:13px;border:1px solid #ccc;border-radius:9px;font-size:16px}button{width:100%;padding:15px;margin-top:22px;border:0;border-radius:9px;background:#25D366;color:white;font-size:18px;font-weight:bold}
 
-      font-family: Arial, sans-serif;
+</style>
 
-      margin: 0;
+</head>
 
-      background: #f5f7fb;
+<body>
 
-      color: #172033;
+<header><h1>PrenotaAI</h1><p>Prenota il tuo appuntamento su WhatsApp</p></header>
 
-    }
+<main><div class="card">
 
-    header {
+<h2>Prenota il tuo appuntamento</h2>
 
-      background: white;
+<label>Nome</label><input id="nome" placeholder="Il tuo nome">
 
-      padding: 24px;
+<label>Servizio</label><select id="servizio"><option value="">Scegli servizio</option><option>Taglio capelli</option><option>Barba</option><option>Taglio + Barba</option><option>Piega</option><option>Manicure</option><option>Pedicure</option><option>Trattamento estetico</option><option>Massaggio</option></select>
 
-      border-bottom: 1px solid #e5e7eb;
+<label>Data</label><input id="data" type="date">
 
-    }
+<label>Ora</label><select id="ora"><option value="">Scegli orario</option><option>09:00</option><option>09:30</option><option>10:00</option><option>10:30</option><option>11:00</option><option>11:30</option><option>12:00</option><option>15:00</option><option>15:30</option><option>16:00</option><option>16:30</option><option>17:00</option><option>17:30</option><option>18:00</option><option>18:30</option><option>19:00</option></select>
 
-    header h1 {
+<button onclick="prenota()">📱 Prenota su WhatsApp</button>
 
-      margin: 0;
+</div></main>
 
-    }
+<script>
 
-    main {
+function prenota(){let n=document.getElementById("nome").value,s=document.getElementById("servizio").value,d=document.getElementById("data").value,o=document.getElementById("ora").value;if(!n||!s||!d||!o){alert("Compila tutti i campi.");return}let numero="393492232579";let m=`Ciao! Vorrei prenotare un appuntamento.%0A%0A👤 Nome: ${n}%0A💇 Servizio: ${s}%0A📅 Data: ${d}%0A⏰ Ora: ${o}`;window.open("https://wa.me/"+numero+"?text="+m,"_blank")}
 
-      max-width: 900px;
+</script>
 
-      margin: 40px auto
+</body>
+
+</html>
