@@ -302,92 +302,17 @@ footer{
 
 </section>
 
+
 <section class="card">
+<h2>📅 Agenda</h2>
 
-  <h2>📅 Agenda</h2>
+<div id="agenda">
 
-  <div class="appointment">
+  <p>Caricamento appuntamenti...</p>
 
-    <h3>09:00 — Nicola</h3>
-
-    <p>💆 Massaggio</p>
-
-    <span class="status">Confermato</span>
-
-    <div class="buttons">
-
-      <button class="secondary" onclick="contatta('Nicola')">
-
-        💬 Contatta
-
-      </button>
-
-      <button class="danger" onclick="disdici('Nicola')">
-
-        ❌ Disdici
-
-      </button>
-
-    </div>
-
-  </div>
-
-  <div class="appointment">
-
-    <h3>11:00 — Marco</h3>
-
-    <p>💆 Massaggio</p>
-
-    <span class="status">Confermato</span>
-
-    <div class="buttons">
-
-      <button class="secondary" onclick="contatta('Marco')">
-
-        💬 Contatta
-
-      </button>
-
-      <button class="danger" onclick="disdici('Marco')">
-
-        ❌ Disdici
-
-      </button>
-
-    </div>
-
-  </div>
-
-  <div class="appointment">
-
-    <h3>15:30 — Laura</h3>
-
-    <p>💆 Massaggio</p>
-
-    <span class="status">Confermato</span>
-
-    <div class="buttons">
-
-      <button class="secondary" onclick="contatta('Laura')">
-
-        💬 Contatta
-
-      </button>
-
-      <button class="danger" onclick="disdici('Laura')">
-
-        ❌ Disdici
-
-      </button>
-
-    </div>
-
-  </div>
+</div>
 
 </section>
-
-<section class="card">
-
   <h2>🔎 Cerca uno slot</h2>
 
   <button class="primary" onclick="cercaSlot()">
@@ -503,7 +428,53 @@ function preparaMessaggio(){
     "</button>";
 
 }
+async function caricaAgenda() {
 
+  const agenda = document.getElementById("agenda");
+
+  const { data, error } = await db
+
+    .from("Appuntamenti")
+
+    .select("id,nome,data,ora,servizio,stato")
+
+    .order("ora", { ascending: true });
+
+  if (error) {
+
+    console.error(error);
+
+    agenda.innerHTML = "<p>Errore nel caricamento degli appuntamenti.</p>";
+
+    return;
+
+  }
+
+  if (!data || data.length === 0) {
+
+    agenda.innerHTML = "<p>Nessun appuntamento.</p>";
+
+    return;
+
+  }
+
+  agenda.innerHTML = data.map(a => `
+
+    <div class="appointment">
+
+      <h3>${a.ora.slice(0,5)} — ${a.nome}</h3>
+
+      <p>💆 ${a.servizio}</p>
+
+      <span class="status">${a.stato}</span>
+
+    </div>
+
+  `).join("");
+
+}
+
+caricaAgenda();
 </script>
 
 </body>
