@@ -6,25 +6,25 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PrenotaAI</title>
-
-<style>
-
-*{box-sizing:border-box}body{font-family:Arial;margin:0;background:#f5f7fb;color:#172033}header{text-align:center;background:white;padding:30px 15px}main{max-width:550px;margin:30px auto;padding:20px}.card{background:white;padding:25px;border-radius:18px;box-shadow:0 5px 20px #0002}h1{margin:0}h2{text-align:center}label{display:block;font-weight:bold;margin:15px 0 6px}input,select{width:100%;padding:13px;border:1px solid #ccc;border-radius:9px;font-size:16px}button{width:100%;padding:15px;margin-top:22px;border:0;border-radius:9px;background:#25D366;color:white;font-size:18px;font-weight:bold}
-
-</style>
+<title>PrenotaAI - La tua segreteria digitale</title>
 
 <style>
+
+*{
+
+  box-sizing:border-box;
+
+}
 
 body{
 
-  font-family:Arial,sans-serif;
-
   margin:0;
 
-  background:linear-gradient(135deg,#f5f7fb,#eaf7ee);
+  font-family:Arial, sans-serif;
+
+  background:#f3f7f5;
 
   color:#172033;
 
@@ -32,55 +32,57 @@ body{
 
 header{
 
-  background:#ffffff;
+  background:white;
 
   padding:30px 20px;
 
   text-align:center;
 
-  box-shadow:0 2px 12px rgba(0,0,0,.08);
+  border-bottom:1px solid #e5ebe8;
 
 }
 
 header h1{
 
-  margin:0 0 8px;
+  margin:0;
 
-  font-size:32px;
+  color:#39885b;
 
-  color:#168c4b;
+  font-size:38px;
 
 }
 
 header p{
 
-  margin:0;
+  margin:10px 0 0;
 
-  color:#667085;
+  color:#687184;
 
-  font-size:16px;
+  font-size:19px;
 
 }
 
 main{
 
-  max-width:520px;
+  max-width:900px;
 
-  margin:35px auto;
+  margin:auto;
 
-  padding:0 18px;
+  padding:24px 16px 50px;
 
 }
 
-main > div{
+.card{
 
-  background:#ffffff;
+  background:white;
 
-  padding:25px;
+  border-radius:28px;
 
-  border-radius:20px;
+  padding:28px;
 
-  box-shadow:0 8px 30px rgba(0,0,0,.10);
+  margin-bottom:24px;
+
+  box-shadow:0 8px 25px rgba(0,0,0,.06);
 
 }
 
@@ -88,127 +90,409 @@ h2{
 
   margin-top:0;
 
-  text-align:center;
-
-  font-size:24px;
+  font-size:28px;
 
 }
 
-label{
+.stats{
+
+  display:grid;
+
+  gap:16px;
+
+}
+
+.stat{
+
+  background:#f3f7f5;
+
+  border-radius:22px;
+
+  padding:22px;
+
+  text-align:center;
+
+}
+
+.stat strong{
 
   display:block;
 
-  margin:18px 0 7px;
+  color:#39885b;
 
-  font-weight:bold;
-
-}
-
-input,select{
-
-  width:100%;
-
-  padding:14px;
-
-  border:1px solid #d0d5dd;
-
-  border-radius:10px;
-
-  font-size:16px;
-
-  background:#fff;
+  font-size:42px;
 
 }
 
-input:focus,select:focus{
+.stat span{
 
-  outline:none;
+  font-size:19px;
 
-  border-color:#25a65a;
+}
 
-  box-shadow:0 0 0 3px rgba(37,166,90,.15);
+.appointment{
+
+  border:1px solid #dce5e1;
+
+  border-radius:20px;
+
+  padding:20px;
+
+  margin-top:16px;
+
+}
+
+.appointment h3{
+
+  margin:0 0 12px;
+
+  font-size:21px;
+
+}
+
+.status{
+
+  display:inline-block;
+
+  background:#dff3e7;
+
+  color:#347b51;
+
+  padding:9px 15px;
+
+  border-radius:20px;
+
+  margin:10px 0;
+
+}
+
+.buttons{
+
+  display:flex;
+
+  gap:10px;
+
+  flex-wrap:wrap;
 
 }
 
 button{
 
-  width:100%;
-
-  margin-top:25px;
-
-  padding:16px;
-
   border:0;
 
-  border-radius:12px;
+  border-radius:14px;
 
-  background:#25d366;
+  padding:13px 18px;
 
-  color:white;
-
-  font-size:17px;
+  font-size:16px;
 
   font-weight:bold;
 
   cursor:pointer;
 
-  box-shadow:0 5px 15px rgba(37,211,102,.25);
+}
+
+.primary{
+
+  background:#39885b;
+
+  color:white;
 
 }
 
-button:hover{
+.secondary{
 
-  background:#1ebe5d;
+  background:#edf1ef;
 
-}
-
-@media(max-width:600px){
-
-  main{
-
-    margin:20px auto;
-
-  }
-
-  main > div{
-
-    padding:20px;
-
-  }
-
-  header h1{
-
-    font-size:28px;
-
-  }
+  color:#172033;
 
 }
 
-</style></head>
+.danger{
+
+  background:#fde5e5;
+
+  color:#b83d3d;
+
+}
+
+.message{
+
+  display:none;
+
+  margin-top:18px;
+
+  padding:18px;
+
+  background:#f3f7f5;
+
+  border-radius:18px;
+
+  line-height:1.6;
+
+}
+
+footer{
+
+  text-align:center;
+
+  color:#687184;
+
+  padding:20px;
+
+}
+
+</style>
+
+</head>
 
 <body>
 
-<header><h1>PrenotaAI</h1><p>Prenota il tuo appuntamento su WhatsApp</p></header>
+<header>
 
-<main><div class="card">
+  <h1>🤖 PrenotaAI</h1>
 
-<h2>Prenota il tuo appuntamento</h2>
+  <p>La tua segreteria digitale</p>
 
-<label>Nome</label><input id="nome" placeholder="Il tuo nome">
+</header>
 
-<label>Servizio</label><select id="servizio"><option value="">Scegli servizio</option><option>Taglio capelli</option><option>Barba</option><option>Taglio + Barba</option><option>Piega</option><option>Manicure</option><option>Pedicure</option><option>Trattamento estetico</option><option>Massaggio</option></select>
+<main>
 
-<label>Data</label><input id="data" type="date">
+<section class="card">
 
-<label>Ora</label><select id="ora"><option value="">Scegli orario</option><option>09:00</option><option>09:30</option><option>10:00</option><option>10:30</option><option>11:00</option><option>11:30</option><option>12:00</option><option>15:00</option><option>15:30</option><option>16:00</option><option>16:30</option><option>17:00</option><option>17:30</option><option>18:00</option><option>18:30</option><option>19:00</option></select>
+  <h2>📊 Situazione di oggi</h2>
 
-<button onclick="prenota()">📱 Prenota su WhatsApp</button>
+  <div class="stats">
 
-</div></main>
+    <div class="stat">
+
+      <strong>3</strong>
+
+      <span>Appuntamenti</span>
+
+    </div>
+
+    <div class="stat">
+
+      <strong>4</strong>
+
+      <span>Slot liberi</span>
+
+    </div>
+
+    <div class="stat">
+
+      <strong>2</strong>
+
+      <span>Messaggi</span>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="card">
+
+  <h2>📅 Agenda</h2>
+
+  <div class="appointment">
+
+    <h3>09:00 — Nicola</h3>
+
+    <p>💆 Massaggio</p>
+
+    <span class="status">Confermato</span>
+
+    <div class="buttons">
+
+      <button class="secondary" onclick="contatta('Nicola')">
+
+        💬 Contatta
+
+      </button>
+
+      <button class="danger" onclick="disdici('Nicola')">
+
+        ❌ Disdici
+
+      </button>
+
+    </div>
+
+  </div>
+
+  <div class="appointment">
+
+    <h3>11:00 — Marco</h3>
+
+    <p>💆 Massaggio</p>
+
+    <span class="status">Confermato</span>
+
+    <div class="buttons">
+
+      <button class="secondary" onclick="contatta('Marco')">
+
+        💬 Contatta
+
+      </button>
+
+      <button class="danger" onclick="disdici('Marco')">
+
+        ❌ Disdici
+
+      </button>
+
+    </div>
+
+  </div>
+
+  <div class="appointment">
+
+    <h3>15:30 — Laura</h3>
+
+    <p>💆 Massaggio</p>
+
+    <span class="status">Confermato</span>
+
+    <div class="buttons">
+
+      <button class="secondary" onclick="contatta('Laura')">
+
+        💬 Contatta
+
+      </button>
+
+      <button class="danger" onclick="disdici('Laura')">
+
+        ❌ Disdici
+
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="card">
+
+  <h2>🔎 Cerca uno slot</h2>
+
+  <button class="primary" onclick="cercaSlot()">
+
+    Cerca disponibilità
+
+  </button>
+
+  <div id="slotMessage" class="message"></div>
+
+</section>
+
+<section class="card">
+
+  <h2>🤖 Assistente PrenotaAI</h2>
+
+  <p>
+
+    L'assistente può aiutarti a gestire appuntamenti,
+
+    trovare disponibilità e preparare messaggi per i clienti.
+
+  </p>
+
+  <button class="primary" onclick="preparaMessaggio()">
+
+    ✉️ Prepara messaggio
+
+  </button>
+
+  <div id="messageBox" class="message"></div>
+
+</section>
+
+</main>
+
+<footer>
+
+  PrenotaAI © 2026
+
+</footer>
 
 <script>
 
-function prenota(){let n=document.getElementById("nome").value,s=document.getElementById("servizio").value,d=document.getElementById("data").value,o=document.getElementById("ora").value;if(!n||!s||!d||!o){alert("Compila tutti i campi.");return}let numero="393492232579";let m=`Ciao! Vorrei prenotare un appuntamento.%0A%0A👤 Nome: ${n}%0A💇 Servizio: ${s}%0A📅 Data: ${d}%0A⏰ Ora: ${o}`;window.open("https://wa.me/"+numero+"?text="+m,"_blank")}
+function contatta(nome){
+
+  const testo =
+
+    "Ciao " + nome +
+
+    "! Ti contatto da PrenotaAI per il tuo appuntamento.";
+
+  window.location.href =
+
+    "https://wa.me/?text=" +
+
+    encodeURIComponent(testo);
+
+}
+
+function disdici(nome){
+
+  alert(
+
+    "Richiesta di disdetta per " +
+
+    nome +
+
+    "."
+
+  );
+
+}
+
+function cercaSlot(){
+
+  const box =
+
+    document.getElementById("slotMessage");
+
+  box.style.display="block";
+
+  box.innerHTML =
+
+    "<strong>🔎 Slot disponibili</strong><br><br>" +
+
+    "Oggi: 13:00, 15:30 e 18:30.<br><br>" +
+
+    "Questi orari possono essere proposti ai clienti.";
+
+}
+
+function preparaMessaggio(){
+
+  const box =
+
+    document.getElementById("messageBox");
+
+  box.style.display="block";
+
+  box.innerHTML =
+
+    "<strong>📱 Messaggio pronto</strong><br><br>" +
+
+    "Ciao! Si è liberato un appuntamento oggi.<br><br>" +
+
+    "Ti interessa prenotarlo? 😊<br><br>" +
+
+    "<button class='primary' onclick=\"contatta('Cliente')\">" +
+
+    "Apri WhatsApp" +
+
+    "</button>";
+
+}
 
 </script>
 
